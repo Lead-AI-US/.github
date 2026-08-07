@@ -1,0 +1,158 @@
+version: "1.0.0"
+last_updated: "2026-08-07"
+organization: "Lead-AI-US"
+ecosystem_name: "Lead.AI SaaS Ecosystem"
+
+modules:
+  - id: "leadai.us"
+    name: "Lead.AI Main Website & SaaS Front-End"
+    repository: "https://github.com/Arungharami/leadai.us"
+    owner: "Lead-AI-US"
+    purpose: "Primary customer acquisition, business presentation, audit entry, and product showcase."
+    status: "active"
+    implementation_status: "production_ready"
+    website_url: "https://lead-ai.us"
+    deployment_status: "verified"
+    deployment_provider: "vercel"
+    hf_model: null
+    hf_dataset: null
+    hf_space: null
+    kaggle_asset: null
+    last_verified: "2026-08-07"
+    notes: "Vite/React/TypeScript application. Deployed on Vercel team aruns-projects-0839d12f project lead-ai-us."
+
+  - id: "lead-ai-business-audit"
+    name: "Lead.AI Business Automation Audit Tool"
+    repository: "https://github.com/Lead-AI-US/lead-ai-business-audit"
+    owner: "Lead-AI-US"
+    purpose: "Interactive assessment questionnaire providing business automation scores and roadmaps."
+    status: "active"
+    implementation_status: "mvp"
+    website_url: "https://lead-ai-business-audit.vercel.app"
+    deployment_status: "verified"
+    deployment_provider: "vercel"
+    hf_model: null
+    hf_dataset: null
+    hf_space: null
+    kaggle_asset: null
+    last_verified: "2026-08-07"
+    notes: "TypeScript audit application connected from main site CTA."
+
+  - id: "lead-ai-platform"
+    name: "Lead.AI SaaS Control Center Platform"
+    repository: "https://github.com/Lead-AI-US/lead-ai-platform"
+    owner: "Lead-AI-US"
+    purpose: "Centralized client management dashboard, pipeline tracking, and automation control plane."
+    status: "planning"
+    implementation_status: "scaffold"
+    website_url: null
+    deployment_status: "pending"
+    deployment_provider: "vercel"
+    hf_model: null
+    hf_dataset: null
+    hf_space: null
+    kaggle_asset: null
+    last_verified: "2026-08-07"
+    notes: "Repository scaffold initialized."
+
+  - id: "lead-ai-website-chatbot"
+    name: "Lead.AI Embeddable Website Chatbot Widget"
+    repository: "https://github.com/Lead-AI-US/lead-ai-website-chatbot"
+    owner: "Lead-AI-US"
+    purpose: "Embeddable web chat widget for 24/7 lead capture, qualification, and FAQ answering."
+    status: "active"
+    implementation_status: "scaffold"
+    website_url: null
+    deployment_status: "pending"
+    deployment_provider: "npm_package"
+    hf_model: null
+    hf_dataset: null
+    hf_space: null
+    kaggle_asset: null
+    last_verified: "2026-08-07"
+    notes: "Local component prototype working on leadai.us site; modular package extraction planned for Phase 1."
+
+  - id: "lead-ai-whatsapp-agent"
+    name: "Lead.AI WhatsApp Automation Agent"
+    repository: "https://github.com/Lead-AI-US/lead-ai-whatsapp-agent"
+    owner: "Lead-AI-US"
+    purpose: "Automated WhatsApp business conversation, lead follow-up, and booking assistant."
+    status: "planning"
+    implementation_status: "scaffold"
+    website_url: null
+    deployment_status: "pending"
+    deployment_provider: "cloud_function"
+    hf_model: null
+    hf_dataset: null
+    hf_space: null
+    kaggle_asset: null
+    last_verified: "2026-08-07"
+    notes: "Repository scaffold initialized; Twilio integration planned."
+
+  - id: "lead-ai-lead-scoring-api"
+    name: "Lead.AI Lead Scoring & Qualification API"
+    repository: "https://github.com/Lead-AI-US/lead-ai-lead-scoring-api"
+    owner: "Lead-AI-US"
+    purpose: "FastAPI predictive lead scoring microservice categorizing lead intent and conversion probability."
+    status: "planning"
+    implementation_status: "scaffold"
+    website_url: null
+    deployment_status: "pending"
+    deployment_provider: "fastapi_docker"
+    hf_model: null
+    hf_dataset: null
+    hf_space: null
+    kaggle_asset: null
+    last_verified: "2026-08-07"
+    notes: "Repository scaffold initialized."
+
+  - id: "lead-ai-prompt-vault"
+    name: "Lead.AI Prompt Vault & LLM Template Assets"
+    repository: "https://github.com/Lead-AI-US/lead-ai-prompt-vault"
+    owner: "Lead-AI-US"
+    purpose: "Structured library of system prompts, qualification rubrics, and evaluation benchmarks."
+    status: "active"
+    implementation_status: "scaffold"
+    website_url: null
+    deployment_status: "internal"
+    deployment_provider: "github"
+    hf_model: null
+    hf_dataset: null
+    hf_space: null
+    kaggle_asset: null
+    last_verified: "2026-08-07"
+    notes: "Prompt templates for chatbot and lead scoring."
+
+  - id: "lead-ai-firebase-saas-starter"
+    name: "Lead.AI Firebase SaaS Architecture Baseline"
+    repository: "https://github.com/Lead-AI-US/lead-ai-firebase-saas-starter"
+    owner: "Lead-AI-US"
+    purpose: "Shared authentication, Firestore data models, and security rules template."
+    status: "active"
+    implementation_status: "scaffold"
+    website_url: null
+    deployment_status: "internal"
+    deployment_provider: "firebase"
+    hf_model: null
+    hf_dataset: null
+    hf_space: null
+    kaggle_asset: null
+    last_verified: "2026-08-07"
+    notes: "Foundation for multi-tenant data isolation and security rules."
+
+  - id: "lead-ai-fraud-shield"
+    name: "Lead.AI Fraud Shield XAI Engine"
+    repository: "https://github.com/Lead-AI-US/lead-ai-fraud-shield"
+    owner: "Lead-AI-US"
+    purpose: "Explainable AI transaction risk scoring with SHAP feature reasoning."
+    status: "active"
+    implementation_status: "prototype"
+    website_url: "https://huggingface.co/spaces/arun-gharami/fraud-detection-xai-demo"
+    deployment_status: "verified"
+    deployment_provider: "huggingface_spaces"
+    hf_model: "lead-ai-labs/fraud-shield-model"
+    hf_dataset: "lead-ai-labs/fraud-shield-synthetic-transactions"
+    hf_space: "arun-gharami/fraud-detection-xai-demo"
+    kaggle_asset: unverified
+    last_verified: "2026-08-07"
+    notes: "Org scaffold lives at Lead-AI-US/lead-ai-fraud-shield; working Python/SHAP prototype currently lives at Arungharami/lead-ai-fraud-shield."
