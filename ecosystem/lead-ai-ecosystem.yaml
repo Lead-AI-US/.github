@@ -1,16 +1,16 @@
-version: "4.0.0"
+version: "5.0.0"
 last_updated: "2026-08-08"
 organization: "Lead-AI-US"
-ecosystem_name: "Lead.AI SaaS Ecosystem"
+ecosystem_name: "Lead.AI Multi-Tenant SaaS Platform Ecosystem"
 
 modules:
   - id: "leadai.us"
-    name: "Lead.AI Main Website & SaaS Front-End"
+    name: "Lead.AI Main Website & SaaS Platform Front-End"
     repository: "https://github.com/Arungharami/leadai.us"
     owner: "Lead-AI-US"
-    purpose: "Primary customer acquisition, website chatbot, WhatsApp, booking, workflow automation, and CRM workspace."
+    purpose: "Primary customer acquisition, SaaS app shell (/app), onboarding wizard, multi-tenant workspace switcher, website chatbot, WhatsApp, booking, workflow automation, and CRM workspace."
     status: "active"
-    implementation_status: "phase4_booking_workflow_verified"
+    implementation_status: "phase5_multitenant_saas_verified"
     website_url: "https://lead-ai-us.vercel.app"
     deployment_status: "verified"
     deployment_provider: "vercel"
@@ -20,16 +20,17 @@ modules:
     kaggle_asset: null
     last_verified: "2026-08-08"
     notes: |
-      Phase 4 Booking & Workflow Automation verified. Includes:
-      - Phase 3 security hardening (durable Twilio dedup, fail-closed signature validation, CORS hardening).
-      - Canonical booking domain (BookingRequest, Appointment, AvailabilitySlot, BusinessHours).
-      - Stub availability service with Google Calendar adapter interface.
-      - Double-booking protection via Firestore transaction.
-      - Durable workflow engine (4 templates) backed by Firestore scheduledActions.
-      - Vercel Cron scheduler (*/5 * * * *) at /api/scheduler/tick.
-      - Reminder engine with suppression checks and cancellation propagation.
-      - Human-approval-required follow-up system.
-      - CRM expanded: /admin/appointments, /admin/approvals, /admin/automations.
+      Phase 5 Multi-Tenant SaaS & Customer Onboarding verified:
+      - Admin server authentication hardening (Firebase Auth ID Token Bearer check via serverAuth.ts).
+      - Workspace & Member domain models (Workspace, WorkspaceMember, WorkspaceRole, Entitlements).
+      - Tenant Data Strategy: Option A hierarchy (workspaces/{workspaceId}/...).
+      - Baseline data migration tool (ws_lead_ai_internal).
+      - Firebase Auth Login (/login) & Signup (/signup) pages.
+      - 6-Step guided customer onboarding wizard (/onboarding).
+      - Multi-tenant App Shell (/app) with Workspace Switcher & App pages.
+      - Per-workspace knowledge base & strict AI context isolation.
+      - Multi-tenant API endpoints (/api/workspaces, /api/workspaces/onboard).
+      - Cross-tenant security isolation unit test suite (3/3 PASSED).
 
   - id: "lead-ai-business-audit"
     name: "Lead.AI Business Automation Audit Tool"
@@ -42,22 +43,26 @@ modules:
     deployment_status: "verified"
     deployment_provider: "vercel"
     last_verified: "2026-08-08"
-    notes: "TypeScript audit application connected from main site CTA, Chatbot recommendations, and Phase 4 booking funnel."
+    notes: "TypeScript audit application connected from main site CTA, Chatbot recommendations, and Phase 5 onboarding."
 
   - id: "lead-ai-platform"
     name: "Lead.AI SaaS Control Center Platform"
     repository: "https://github.com/Lead-AI-US/lead-ai-platform"
     owner: "Lead-AI-US"
-    purpose: "Centralized CRM, appointments, approvals, and automation dashboard."
+    purpose: "Centralized multi-tenant CRM, appointments, approvals, knowledge, team, and automation dashboard."
     status: "active"
-    implementation_status: "phase4_automation_dashboard_verified"
-    website_url: "https://lead-ai-us.vercel.app/admin"
+    implementation_status: "phase5_multitenant_dashboard_verified"
+    website_url: "https://lead-ai-us.vercel.app/app"
     deployment_status: "verified"
     deployment_provider: "vercel"
     last_verified: "2026-08-08"
     notes: |
-      Full Phase 4 admin workspace:
-      /admin/leads — Lead management
+      Full Phase 5 multi-tenant SaaS workspace:
+      /app — Overview & command center
+      /app/knowledge — Per-workspace knowledge base editor
+      /app/settings — Workspace configuration & embed key
+      /app/team — Member roles & invitations
+      /admin/leads — Tenant lead management
       /admin/conversations — Omnichannel inbox
       /admin/appointments — Booking & reminder management
       /admin/approvals — Human approval queue
@@ -67,87 +72,40 @@ modules:
     name: "Lead.AI Embeddable Website Chatbot Widget"
     repository: "https://github.com/Lead-AI-US/lead-ai-website-chatbot"
     owner: "Lead-AI-US"
-    purpose: "Server-connected 24/7 lead capture chatbot with booking and human handoff support."
+    purpose: "Tenant-isolated 24/7 lead capture chatbot widget with widget key resolution."
     status: "active"
-    implementation_status: "production_ready_phase4"
+    implementation_status: "production_ready_phase5"
     website_url: "https://lead-ai-us.vercel.app"
     deployment_status: "verified"
     deployment_provider: "vercel"
     last_verified: "2026-08-08"
-    notes: "Hardened CORS + 2000 char message limit. Booking CTA integration ready."
+    notes: "Hardened CORS + 2000 char message limit. Public widget key tenant resolution."
 
   - id: "lead-ai-whatsapp-agent"
     name: "Lead.AI WhatsApp Automation Agent"
     repository: "https://github.com/Lead-AI-US/lead-ai-whatsapp-agent"
     owner: "Lead-AI-US"
-    purpose: "Twilio WhatsApp webhook with durable dedup, fail-closed signature validation, and booking intent routing."
+    purpose: "Twilio WhatsApp webhook with durable dedup, fail-closed signature validation, and tenant workspace routing."
     status: "active"
-    implementation_status: "production_hardened_phase4"
+    implementation_status: "production_hardened_phase5"
     website_url: null
     deployment_status: "verified"
     deployment_provider: "vercel_serverless"
     last_verified: "2026-08-08"
     notes: "Durable Firestore processedEvents deduplication. Fail-closed TWILIO_AUTH_TOKEN requirement."
 
-  - id: "lead-ai-lead-scoring-api"
-    name: "Lead.AI Lead Scoring & Qualification API"
-    repository: "https://github.com/Lead-AI-US/lead-ai-lead-scoring-api"
-    owner: "Lead-AI-US"
-    purpose: "FastAPI predictive lead scoring microservice."
-    status: "planning"
-    implementation_status: "scaffold"
-    website_url: null
-    deployment_status: "pending"
-    deployment_provider: "fastapi_docker"
-    last_verified: "2026-08-08"
-    notes: "Phase 5 integration planned. Booking qualification features feed scoring pipeline."
-
-  - id: "lead-ai-prompt-vault"
-    name: "Lead.AI Prompt Vault & LLM Template Assets"
-    repository: "https://github.com/Lead-AI-US/lead-ai-prompt-vault"
-    owner: "Lead-AI-US"
-    purpose: "Approved knowledge rules, AI safety definitions, and follow-up message templates."
-    status: "active"
-    implementation_status: "production_ready"
-    website_url: null
-    deployment_status: "internal"
-    deployment_provider: "github"
-    last_verified: "2026-08-08"
-    notes: "Approved knowledge rules integrated in aiOrchestrator.ts. Phase 4 follow-up draft templates in followUpService.ts."
-
   - id: "lead-ai-firebase-saas-starter"
     name: "Lead.AI Firebase SaaS Architecture Baseline"
     repository: "https://github.com/Lead-AI-US/lead-ai-firebase-saas-starter"
     owner: "Lead-AI-US"
-    purpose: "Shared Firestore collections, security rules, and Admin SDK initialization."
+    purpose: "Shared Firestore collections, tenant security rules, and Admin SDK initialization."
     status: "active"
-    implementation_status: "integrated_phase4"
+    implementation_status: "integrated_phase5"
     website_url: null
     deployment_status: "internal"
     deployment_provider: "firebase"
     last_verified: "2026-08-08"
     notes: |
-      Phase 4 Firestore collections:
-      - leads, lead_activities (Phase 2)
-      - conversations, messages, handoffs (Phase 3)
-      - processedEvents (Phase 3 hardening)
-      - bookingRequests, appointments (Phase 4)
-      - workflowRuns, scheduledActions (Phase 4)
-      - reminders, followUps (Phase 4)
-
-  - id: "lead-ai-fraud-shield"
-    name: "Lead.AI Fraud Shield XAI Engine"
-    repository: "https://github.com/Lead-AI-US/lead-ai-fraud-shield"
-    owner: "Lead-AI-US"
-    purpose: "Explainable AI transaction risk scoring with SHAP feature reasoning."
-    status: "active"
-    implementation_status: "prototype"
-    website_url: "https://huggingface.co/spaces/arun-gharami/fraud-detection-xai-demo"
-    deployment_status: "verified"
-    deployment_provider: "huggingface_spaces"
-    hf_model: "lead-ai-labs/fraud-shield-model"
-    hf_dataset: "lead-ai-labs/fraud-shield-synthetic-transactions"
-    hf_space: "arun-gharami/fraud-detection-xai-demo"
-    kaggle_asset: unverified
-    last_verified: "2026-08-08"
-    notes: "Prototype working. Org scaffold at Lead-AI-US/lead-ai-fraud-shield; working code at Arungharami/lead-ai-fraud-shield."
+      Phase 5 Firestore tenancy hierarchy:
+      - Root: workspaces, workspaceMembers, users, processedEvents
+      - Subcollections: workspaces/{workspaceId}/[leads, conversations, appointments, bookingRequests, workflowRuns, scheduledActions, followUps, knowledgeSources]
