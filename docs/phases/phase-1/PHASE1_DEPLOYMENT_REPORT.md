@@ -7,7 +7,8 @@
 
 - **TypeScript Typecheck:** `npx tsc --noEmit` — 0 errors.
 - **Vite Production Build:** `npm run build` — 1747 modules transformed cleanly.
-- **Commit SHA:** `370255c` on repository `Arungharami/leadai.us` main branch.
+- **Serverless API Route:** `/api/contact` (Vercel Serverless Function).
+- **Commit SHA:** `ee13c72` on repository `Arungharami/leadai.us` main branch.
 
 ---
 
