@@ -1,4 +1,4 @@
-version: "2.0.0"
+version: "3.0.0"
 last_updated: "2026-08-08"
 organization: "Lead-AI-US"
 ecosystem_name: "Lead.AI SaaS Ecosystem"
@@ -10,7 +10,7 @@ modules:
     owner: "Lead-AI-US"
     purpose: "Primary customer acquisition, business presentation, audit entry, and product showcase."
     status: "active"
-    implementation_status: "production_operating_system_verified"
+    implementation_status: "omnichannel_automation_verified"
     website_url: "https://lead-ai-us.vercel.app"
     deployment_status: "verified"
     deployment_provider: "vercel"
@@ -19,7 +19,7 @@ modules:
     hf_space: null
     kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "Phase 2 Production Operating System verified. Includes serverless /api/contact with Zod validation, Firestore durable lead persistence, Resend notification engine, truthful modal submission, CRM-lite workspace at /admin/leads, and GitHub Actions CI."
+    notes: "Phase 3 Omnichannel Automation verified. Includes backend-connected Chatbot Widget (/api/chat/message), Twilio WhatsApp Webhook (/api/whatsapp/webhook), AI Safety Orchestrator, zero public pricing policy, human handoff bridge, and CRM Omnichannel Inbox at /admin/conversations."
 
   - id: "lead-ai-business-audit"
     name: "Lead.AI Business Automation Audit Tool"
@@ -36,7 +36,7 @@ modules:
     hf_space: null
     kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "TypeScript audit application connected from main site CTA."
+    notes: "TypeScript audit application connected from main site CTA & Chatbot recommendations."
 
   - id: "lead-ai-platform"
     name: "Lead.AI SaaS Control Center Platform"
@@ -44,8 +44,8 @@ modules:
     owner: "Lead-AI-US"
     purpose: "Centralized client management dashboard, pipeline tracking, and automation control plane."
     status: "active"
-    implementation_status: "crm_lite_baseline"
-    website_url: "https://lead-ai-us.vercel.app/admin/leads"
+    implementation_status: "omnichannel_inbox_baseline"
+    website_url: "https://lead-ai-us.vercel.app/admin/conversations"
     deployment_status: "verified"
     deployment_provider: "vercel"
     hf_model: null
@@ -53,7 +53,7 @@ modules:
     hf_space: null
     kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "CRM-lite workspace deployed at /admin/leads with status filters, detail drawers, internal notes, and activity timeline."
+    notes: "CRM Omnichannel Inbox deployed at /admin/conversations with live Web & WhatsApp timelines, handoff acceptance, and operator reply controls."
 
   - id: "lead-ai-website-chatbot"
     name: "Lead.AI Embeddable Website Chatbot Widget"
@@ -61,33 +61,33 @@ modules:
     owner: "Lead-AI-US"
     purpose: "Embeddable web chat widget for 24/7 lead capture, qualification, and FAQ answering."
     status: "active"
-    implementation_status: "scaffold"
-    website_url: null
-    deployment_status: "pending"
+    implementation_status: "production_ready"
+    website_url: "https://lead-ai-us.vercel.app"
+    deployment_status: "verified"
     deployment_provider: "npm_package"
     hf_model: null
     hf_dataset: null
     hf_space: null
     kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "Shared lead schema & /api/contact pipeline ready for Phase 3 chatbot integration."
+    notes: "Server-backed Chatbot widget deployed on leadai.us with reload session support (/api/chat/session) and human handoff triggers."
 
   - id: "lead-ai-whatsapp-agent"
     name: "Lead.AI WhatsApp Automation Agent"
     repository: "https://github.com/Lead-AI-US/lead-ai-whatsapp-agent"
     owner: "Lead-AI-US"
     purpose: "Automated WhatsApp business conversation, lead follow-up, and booking assistant."
-    status: "planning"
-    implementation_status: "scaffold"
+    status: "active"
+    implementation_status: "production_ready"
     website_url: null
-    deployment_status: "pending"
+    deployment_status: "verified"
     deployment_provider: "cloud_function"
     hf_model: null
     hf_dataset: null
     hf_space: null
     kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "Shared lead schema & /api/contact pipeline ready for Phase 3 WhatsApp agent integration."
+    notes: "Twilio WhatsApp Webhook endpoint deployed at /api/whatsapp/webhook with signature validation, MessageSid deduplication, and TwiML XML responses."
 
   - id: "lead-ai-lead-scoring-api"
     name: "Lead.AI Lead Scoring & Qualification API"
@@ -104,7 +104,7 @@ modules:
     hf_space: null
     kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "Repository scaffold initialized."
+    notes: "Repository scaffold initialized; Phase 4 integration planned."
 
   - id: "lead-ai-prompt-vault"
     name: "Lead.AI Prompt Vault & LLM Template Assets"
@@ -112,7 +112,7 @@ modules:
     owner: "Lead-AI-US"
     purpose: "Structured library of system prompts, qualification rubrics, and evaluation benchmarks."
     status: "active"
-    implementation_status: "scaffold"
+    implementation_status: "production_ready"
     website_url: null
     deployment_status: "internal"
     deployment_provider: "github"
@@ -121,7 +121,7 @@ modules:
     hf_space: null
     kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "Prompt templates for chatbot and lead scoring."
+    notes: "Approved knowledge rules & prompt safety definitions integrated in aiOrchestrator.ts and knowledgeService.ts."
 
   - id: "lead-ai-firebase-saas-starter"
     name: "Lead.AI Firebase SaaS Architecture Baseline"
@@ -129,7 +129,7 @@ modules:
     owner: "Lead-AI-US"
     purpose: "Shared authentication, Firestore data models, and security rules template."
     status: "active"
-    implementation_status: "integrated_phase2"
+    implementation_status: "integrated_phase3"
     website_url: null
     deployment_status: "internal"
     deployment_provider: "firebase"
@@ -138,7 +138,7 @@ modules:
     hf_space: null
     kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "Integrated Firestore leads/lead_activities collections and Firebase Auth gate."
+    notes: "Integrated Firestore conversations, messages, and handoffs collections."
 
   - id: "lead-ai-fraud-shield"
     name: "Lead.AI Fraud Shield XAI Engine"
