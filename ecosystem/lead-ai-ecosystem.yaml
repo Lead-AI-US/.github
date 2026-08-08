@@ -1,16 +1,16 @@
-version: "5.0.0"
+version: "6.0.0"
 last_updated: "2026-08-08"
 organization: "Lead-AI-US"
-ecosystem_name: "Lead.AI Multi-Tenant SaaS Platform Ecosystem"
+ecosystem_name: "Lead.AI Operational SaaS Platform Ecosystem"
 
 modules:
   - id: "leadai.us"
-    name: "Lead.AI Main Website & SaaS Platform Front-End"
+    name: "Lead.AI Main Website & Operational SaaS Platform Front-End"
     repository: "https://github.com/Arungharami/leadai.us"
     owner: "Lead-AI-US"
-    purpose: "Primary customer acquisition, SaaS app shell (/app), onboarding wizard, multi-tenant workspace switcher, website chatbot, WhatsApp, booking, workflow automation, and CRM workspace."
+    purpose: "Primary customer acquisition, SaaS app shell (/app), onboarding wizard, workspace context provider, integrations directory, health center, website chatbot, WhatsApp, booking, workflow automation, and CRM workspace."
     status: "active"
-    implementation_status: "phase5_multitenant_saas_verified"
+    implementation_status: "phase6_operational_saas_verified"
     website_url: "https://lead-ai-us.vercel.app"
     deployment_status: "verified"
     deployment_provider: "vercel"
@@ -20,17 +20,14 @@ modules:
     kaggle_asset: null
     last_verified: "2026-08-08"
     notes: |
-      Phase 5 Multi-Tenant SaaS & Customer Onboarding verified:
-      - Admin server authentication hardening (Firebase Auth ID Token Bearer check via serverAuth.ts).
-      - Workspace & Member domain models (Workspace, WorkspaceMember, WorkspaceRole, Entitlements).
-      - Tenant Data Strategy: Option A hierarchy (workspaces/{workspaceId}/...).
-      - Baseline data migration tool (ws_lead_ai_internal).
-      - Firebase Auth Login (/login) & Signup (/signup) pages.
-      - 6-Step guided customer onboarding wizard (/onboarding).
-      - Multi-tenant App Shell (/app) with Workspace Switcher & App pages.
-      - Per-workspace knowledge base & strict AI context isolation.
-      - Multi-tenant API endpoints (/api/workspaces, /api/workspaces/onboard).
-      - Cross-tenant security isolation unit test suite (3/3 PASSED).
+      Phase 6 Customer Provisioning & SaaS Operations verified:
+      - WorkspaceContext provider for real workspace state & GET /api/workspaces synchronization.
+      - ProtectedRoute auth guard for all consolidated /app/* routes.
+      - Idempotent customer workspace provisioning & server-authorized activation checklist (/api/workspaces/activate).
+      - Integration Secret Vault (AES-256-GCM server-side encryption via secretVault.ts).
+      - Self-service integrations dashboard (/app/integrations) for Website Chat, Google Calendar, WhatsApp, Email.
+      - Real-time Health Center & diagnostic audit page (/app/health).
+      - Consolidated SaaS routes (/app/leads, /app/conversations, /app/appointments, /app/automations, /app/approvals, /app/integrations, /app/health).
 
   - id: "lead-ai-business-audit"
     name: "Lead.AI Business Automation Audit Tool"
@@ -43,30 +40,32 @@ modules:
     deployment_status: "verified"
     deployment_provider: "vercel"
     last_verified: "2026-08-08"
-    notes: "TypeScript audit application connected from main site CTA, Chatbot recommendations, and Phase 5 onboarding."
+    notes: "TypeScript audit application connected from main site CTA, Chatbot recommendations, and Phase 6 onboarding."
 
   - id: "lead-ai-platform"
     name: "Lead.AI SaaS Control Center Platform"
     repository: "https://github.com/Lead-AI-US/lead-ai-platform"
     owner: "Lead-AI-US"
-    purpose: "Centralized multi-tenant CRM, appointments, approvals, knowledge, team, and automation dashboard."
+    purpose: "Centralized operational SaaS dashboard, integrations, health center, CRM, appointments, approvals, knowledge, team, and automations."
     status: "active"
-    implementation_status: "phase5_multitenant_dashboard_verified"
+    implementation_status: "phase6_operational_dashboard_verified"
     website_url: "https://lead-ai-us.vercel.app/app"
     deployment_status: "verified"
     deployment_provider: "vercel"
     last_verified: "2026-08-08"
     notes: |
-      Full Phase 5 multi-tenant SaaS workspace:
+      Full Phase 6 operational SaaS workspace:
       /app — Overview & command center
+      /app/leads — Tenant lead management
+      /app/conversations — Omnichannel inbox
+      /app/appointments — Booking & reminder management
+      /app/automations — Workflow engine dashboard
+      /app/approvals — Human approval queue
+      /app/integrations — Self-service integration directory
       /app/knowledge — Per-workspace knowledge base editor
-      /app/settings — Workspace configuration & embed key
+      /app/health — Real-time operational health center
       /app/team — Member roles & invitations
-      /admin/leads — Tenant lead management
-      /admin/conversations — Omnichannel inbox
-      /admin/appointments — Booking & reminder management
-      /admin/approvals — Human approval queue
-      /admin/automations — Workflow engine dashboard & failure inbox
+      /app/settings — Workspace configuration & embed key
 
   - id: "lead-ai-website-chatbot"
     name: "Lead.AI Embeddable Website Chatbot Widget"
@@ -74,7 +73,7 @@ modules:
     owner: "Lead-AI-US"
     purpose: "Tenant-isolated 24/7 lead capture chatbot widget with widget key resolution."
     status: "active"
-    implementation_status: "production_ready_phase5"
+    implementation_status: "production_ready_phase6"
     website_url: "https://lead-ai-us.vercel.app"
     deployment_status: "verified"
     deployment_provider: "vercel"
@@ -87,7 +86,7 @@ modules:
     owner: "Lead-AI-US"
     purpose: "Twilio WhatsApp webhook with durable dedup, fail-closed signature validation, and tenant workspace routing."
     status: "active"
-    implementation_status: "production_hardened_phase5"
+    implementation_status: "production_hardened_phase6"
     website_url: null
     deployment_status: "verified"
     deployment_provider: "vercel_serverless"
@@ -98,14 +97,14 @@ modules:
     name: "Lead.AI Firebase SaaS Architecture Baseline"
     repository: "https://github.com/Lead-AI-US/lead-ai-firebase-saas-starter"
     owner: "Lead-AI-US"
-    purpose: "Shared Firestore collections, tenant security rules, and Admin SDK initialization."
+    purpose: "Shared Firestore collections, tenant security rules, AES-256 secret vault, and Admin SDK initialization."
     status: "active"
-    implementation_status: "integrated_phase5"
+    implementation_status: "integrated_phase6"
     website_url: null
     deployment_status: "internal"
     deployment_provider: "firebase"
     last_verified: "2026-08-08"
     notes: |
-      Phase 5 Firestore tenancy hierarchy:
+      Phase 6 Firestore tenancy hierarchy & vault:
       - Root: workspaces, workspaceMembers, users, processedEvents
-      - Subcollections: workspaces/{workspaceId}/[leads, conversations, appointments, bookingRequests, workflowRuns, scheduledActions, followUps, knowledgeSources]
+      - Subcollections: workspaces/{workspaceId}/[leads, conversations, appointments, bookingRequests, workflowRuns, scheduledActions, followUps, knowledgeSources, secrets]
