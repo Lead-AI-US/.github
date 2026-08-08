@@ -1,7 +1,7 @@
-version: "6.0.0"
+version: "6.1.0"
 last_updated: "2026-08-08"
 organization: "Lead-AI-US"
-ecosystem_name: "Lead.AI Operational SaaS Platform Ecosystem"
+ecosystem_name: "Lead.AI Pilot Security Hardened SaaS Ecosystem"
 
 modules:
   - id: "leadai.us"
@@ -10,7 +10,7 @@ modules:
     owner: "Lead-AI-US"
     purpose: "Primary customer acquisition, SaaS app shell (/app), onboarding wizard, workspace context provider, integrations directory, health center, website chatbot, WhatsApp, booking, workflow automation, and CRM workspace."
     status: "active"
-    implementation_status: "phase6_operational_saas_verified"
+    implementation_status: "phase6_1_pilot_security_hardened"
     website_url: "https://lead-ai-us.vercel.app"
     deployment_status: "verified"
     deployment_provider: "vercel"
@@ -20,14 +20,13 @@ modules:
     kaggle_asset: null
     last_verified: "2026-08-08"
     notes: |
-      Phase 6 Customer Provisioning & SaaS Operations verified:
-      - WorkspaceContext provider for real workspace state & GET /api/workspaces synchronization.
-      - ProtectedRoute auth guard for all consolidated /app/* routes.
-      - Idempotent customer workspace provisioning & server-authorized activation checklist (/api/workspaces/activate).
-      - Integration Secret Vault (AES-256-GCM server-side encryption via secretVault.ts).
-      - Self-service integrations dashboard (/app/integrations) for Website Chat, Google Calendar, WhatsApp, Email.
-      - Real-time Health Center & diagnostic audit page (/app/health).
-      - Consolidated SaaS routes (/app/leads, /app/conversations, /app/appointments, /app/automations, /app/approvals, /app/integrations, /app/health).
+      Phase 6.1 Pilot Security Gate verified:
+      - Browser auth bypass (isDemoAdminSession / localStorage) completely removed.
+      - Fail-closed Secret Vault (AES-256-GCM requiring SERVER_SECRET_KEY without fallbacks).
+      - CRON_SECRET isolated exclusively to /api/scheduler/tick.
+      - Email-based super-admin fallback completely removed.
+      - Workspace membership authorization strictly checked from Firestore workspaceMembers.
+      - Red-Team automated security test suite (3/3 PASSED).
 
   - id: "lead-ai-business-audit"
     name: "Lead.AI Business Automation Audit Tool"
@@ -48,13 +47,13 @@ modules:
     owner: "Lead-AI-US"
     purpose: "Centralized operational SaaS dashboard, integrations, health center, CRM, appointments, approvals, knowledge, team, and automations."
     status: "active"
-    implementation_status: "phase6_operational_dashboard_verified"
+    implementation_status: "phase6_1_security_hardened"
     website_url: "https://lead-ai-us.vercel.app/app"
     deployment_status: "verified"
     deployment_provider: "vercel"
     last_verified: "2026-08-08"
     notes: |
-      Full Phase 6 operational SaaS workspace:
+      Full Phase 6.1 operational SaaS workspace:
       /app — Overview & command center
       /app/leads — Tenant lead management
       /app/conversations — Omnichannel inbox
@@ -73,7 +72,7 @@ modules:
     owner: "Lead-AI-US"
     purpose: "Tenant-isolated 24/7 lead capture chatbot widget with widget key resolution."
     status: "active"
-    implementation_status: "production_ready_phase6"
+    implementation_status: "production_ready_phase6_1"
     website_url: "https://lead-ai-us.vercel.app"
     deployment_status: "verified"
     deployment_provider: "vercel"
@@ -86,7 +85,7 @@ modules:
     owner: "Lead-AI-US"
     purpose: "Twilio WhatsApp webhook with durable dedup, fail-closed signature validation, and tenant workspace routing."
     status: "active"
-    implementation_status: "production_hardened_phase6"
+    implementation_status: "production_hardened_phase6_1"
     website_url: null
     deployment_status: "verified"
     deployment_provider: "vercel_serverless"
@@ -99,12 +98,12 @@ modules:
     owner: "Lead-AI-US"
     purpose: "Shared Firestore collections, tenant security rules, AES-256 secret vault, and Admin SDK initialization."
     status: "active"
-    implementation_status: "integrated_phase6"
+    implementation_status: "integrated_phase6_1"
     website_url: null
     deployment_status: "internal"
     deployment_provider: "firebase"
     last_verified: "2026-08-08"
     notes: |
-      Phase 6 Firestore tenancy hierarchy & vault:
+      Phase 6.1 Firestore tenancy hierarchy & fail-closed vault:
       - Root: workspaces, workspaceMembers, users, processedEvents
       - Subcollections: workspaces/{workspaceId}/[leads, conversations, appointments, bookingRequests, workflowRuns, scheduledActions, followUps, knowledgeSources, secrets]
