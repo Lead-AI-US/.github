@@ -1,4 +1,4 @@
-version: "3.0.0"
+version: "4.0.0"
 last_updated: "2026-08-08"
 organization: "Lead-AI-US"
 ecosystem_name: "Lead.AI SaaS Ecosystem"
@@ -8,9 +8,9 @@ modules:
     name: "Lead.AI Main Website & SaaS Front-End"
     repository: "https://github.com/Arungharami/leadai.us"
     owner: "Lead-AI-US"
-    purpose: "Primary customer acquisition, business presentation, audit entry, and product showcase."
+    purpose: "Primary customer acquisition, website chatbot, WhatsApp, booking, workflow automation, and CRM workspace."
     status: "active"
-    implementation_status: "omnichannel_automation_verified"
+    implementation_status: "phase4_booking_workflow_verified"
     website_url: "https://lead-ai-us.vercel.app"
     deployment_status: "verified"
     deployment_provider: "vercel"
@@ -19,126 +19,121 @@ modules:
     hf_space: null
     kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "Phase 3 Omnichannel Automation verified. Includes backend-connected Chatbot Widget (/api/chat/message), Twilio WhatsApp Webhook (/api/whatsapp/webhook), AI Safety Orchestrator, zero public pricing policy, human handoff bridge, and CRM Omnichannel Inbox at /admin/conversations."
+    notes: |
+      Phase 4 Booking & Workflow Automation verified. Includes:
+      - Phase 3 security hardening (durable Twilio dedup, fail-closed signature validation, CORS hardening).
+      - Canonical booking domain (BookingRequest, Appointment, AvailabilitySlot, BusinessHours).
+      - Stub availability service with Google Calendar adapter interface.
+      - Double-booking protection via Firestore transaction.
+      - Durable workflow engine (4 templates) backed by Firestore scheduledActions.
+      - Vercel Cron scheduler (*/5 * * * *) at /api/scheduler/tick.
+      - Reminder engine with suppression checks and cancellation propagation.
+      - Human-approval-required follow-up system.
+      - CRM expanded: /admin/appointments, /admin/approvals, /admin/automations.
 
   - id: "lead-ai-business-audit"
     name: "Lead.AI Business Automation Audit Tool"
     repository: "https://github.com/Lead-AI-US/lead-ai-business-audit"
     owner: "Lead-AI-US"
-    purpose: "Interactive assessment questionnaire providing business automation scores and roadmaps."
+    purpose: "Interactive assessment providing business automation scores and roadmaps."
     status: "active"
     implementation_status: "mvp"
     website_url: "https://lead-ai-business-audit.vercel.app"
     deployment_status: "verified"
     deployment_provider: "vercel"
-    hf_model: null
-    hf_dataset: null
-    hf_space: null
-    kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "TypeScript audit application connected from main site CTA & Chatbot recommendations."
+    notes: "TypeScript audit application connected from main site CTA, Chatbot recommendations, and Phase 4 booking funnel."
 
   - id: "lead-ai-platform"
     name: "Lead.AI SaaS Control Center Platform"
     repository: "https://github.com/Lead-AI-US/lead-ai-platform"
     owner: "Lead-AI-US"
-    purpose: "Centralized client management dashboard, pipeline tracking, and automation control plane."
+    purpose: "Centralized CRM, appointments, approvals, and automation dashboard."
     status: "active"
-    implementation_status: "omnichannel_inbox_baseline"
-    website_url: "https://lead-ai-us.vercel.app/admin/conversations"
+    implementation_status: "phase4_automation_dashboard_verified"
+    website_url: "https://lead-ai-us.vercel.app/admin"
     deployment_status: "verified"
     deployment_provider: "vercel"
-    hf_model: null
-    hf_dataset: null
-    hf_space: null
-    kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "CRM Omnichannel Inbox deployed at /admin/conversations with live Web & WhatsApp timelines, handoff acceptance, and operator reply controls."
+    notes: |
+      Full Phase 4 admin workspace:
+      /admin/leads — Lead management
+      /admin/conversations — Omnichannel inbox
+      /admin/appointments — Booking & reminder management
+      /admin/approvals — Human approval queue
+      /admin/automations — Workflow engine dashboard & failure inbox
 
   - id: "lead-ai-website-chatbot"
     name: "Lead.AI Embeddable Website Chatbot Widget"
     repository: "https://github.com/Lead-AI-US/lead-ai-website-chatbot"
     owner: "Lead-AI-US"
-    purpose: "Embeddable web chat widget for 24/7 lead capture, qualification, and FAQ answering."
+    purpose: "Server-connected 24/7 lead capture chatbot with booking and human handoff support."
     status: "active"
-    implementation_status: "production_ready"
+    implementation_status: "production_ready_phase4"
     website_url: "https://lead-ai-us.vercel.app"
     deployment_status: "verified"
-    deployment_provider: "npm_package"
-    hf_model: null
-    hf_dataset: null
-    hf_space: null
-    kaggle_asset: null
+    deployment_provider: "vercel"
     last_verified: "2026-08-08"
-    notes: "Server-backed Chatbot widget deployed on leadai.us with reload session support (/api/chat/session) and human handoff triggers."
+    notes: "Hardened CORS + 2000 char message limit. Booking CTA integration ready."
 
   - id: "lead-ai-whatsapp-agent"
     name: "Lead.AI WhatsApp Automation Agent"
     repository: "https://github.com/Lead-AI-US/lead-ai-whatsapp-agent"
     owner: "Lead-AI-US"
-    purpose: "Automated WhatsApp business conversation, lead follow-up, and booking assistant."
+    purpose: "Twilio WhatsApp webhook with durable dedup, fail-closed signature validation, and booking intent routing."
     status: "active"
-    implementation_status: "production_ready"
+    implementation_status: "production_hardened_phase4"
     website_url: null
     deployment_status: "verified"
-    deployment_provider: "cloud_function"
-    hf_model: null
-    hf_dataset: null
-    hf_space: null
-    kaggle_asset: null
+    deployment_provider: "vercel_serverless"
     last_verified: "2026-08-08"
-    notes: "Twilio WhatsApp Webhook endpoint deployed at /api/whatsapp/webhook with signature validation, MessageSid deduplication, and TwiML XML responses."
+    notes: "Durable Firestore processedEvents deduplication. Fail-closed TWILIO_AUTH_TOKEN requirement."
 
   - id: "lead-ai-lead-scoring-api"
     name: "Lead.AI Lead Scoring & Qualification API"
     repository: "https://github.com/Lead-AI-US/lead-ai-lead-scoring-api"
     owner: "Lead-AI-US"
-    purpose: "FastAPI predictive lead scoring microservice categorizing lead intent and conversion probability."
+    purpose: "FastAPI predictive lead scoring microservice."
     status: "planning"
     implementation_status: "scaffold"
     website_url: null
     deployment_status: "pending"
     deployment_provider: "fastapi_docker"
-    hf_model: null
-    hf_dataset: null
-    hf_space: null
-    kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "Repository scaffold initialized; Phase 4 integration planned."
+    notes: "Phase 5 integration planned. Booking qualification features feed scoring pipeline."
 
   - id: "lead-ai-prompt-vault"
     name: "Lead.AI Prompt Vault & LLM Template Assets"
     repository: "https://github.com/Lead-AI-US/lead-ai-prompt-vault"
     owner: "Lead-AI-US"
-    purpose: "Structured library of system prompts, qualification rubrics, and evaluation benchmarks."
+    purpose: "Approved knowledge rules, AI safety definitions, and follow-up message templates."
     status: "active"
     implementation_status: "production_ready"
     website_url: null
     deployment_status: "internal"
     deployment_provider: "github"
-    hf_model: null
-    hf_dataset: null
-    hf_space: null
-    kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "Approved knowledge rules & prompt safety definitions integrated in aiOrchestrator.ts and knowledgeService.ts."
+    notes: "Approved knowledge rules integrated in aiOrchestrator.ts. Phase 4 follow-up draft templates in followUpService.ts."
 
   - id: "lead-ai-firebase-saas-starter"
     name: "Lead.AI Firebase SaaS Architecture Baseline"
     repository: "https://github.com/Lead-AI-US/lead-ai-firebase-saas-starter"
     owner: "Lead-AI-US"
-    purpose: "Shared authentication, Firestore data models, and security rules template."
+    purpose: "Shared Firestore collections, security rules, and Admin SDK initialization."
     status: "active"
-    implementation_status: "integrated_phase3"
+    implementation_status: "integrated_phase4"
     website_url: null
     deployment_status: "internal"
     deployment_provider: "firebase"
-    hf_model: null
-    hf_dataset: null
-    hf_space: null
-    kaggle_asset: null
     last_verified: "2026-08-08"
-    notes: "Integrated Firestore conversations, messages, and handoffs collections."
+    notes: |
+      Phase 4 Firestore collections:
+      - leads, lead_activities (Phase 2)
+      - conversations, messages, handoffs (Phase 3)
+      - processedEvents (Phase 3 hardening)
+      - bookingRequests, appointments (Phase 4)
+      - workflowRuns, scheduledActions (Phase 4)
+      - reminders, followUps (Phase 4)
 
   - id: "lead-ai-fraud-shield"
     name: "Lead.AI Fraud Shield XAI Engine"
@@ -155,4 +150,4 @@ modules:
     hf_space: "arun-gharami/fraud-detection-xai-demo"
     kaggle_asset: unverified
     last_verified: "2026-08-08"
-    notes: "Org scaffold lives at Lead-AI-US/lead-ai-fraud-shield; working Python/SHAP prototype currently lives at Arungharami/lead-ai-fraud-shield."
+    notes: "Prototype working. Org scaffold at Lead-AI-US/lead-ai-fraud-shield; working code at Arungharami/lead-ai-fraud-shield."
