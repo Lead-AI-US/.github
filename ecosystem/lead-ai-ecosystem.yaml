@@ -1,5 +1,5 @@
 version: "1.0.0"
-last_updated: "2026-08-07"
+last_updated: "2026-08-08"
 organization: "Lead-AI-US"
 ecosystem_name: "Lead.AI SaaS Ecosystem"
 
@@ -11,15 +11,15 @@ modules:
     purpose: "Primary customer acquisition, business presentation, audit entry, and product showcase."
     status: "active"
     implementation_status: "production_ready"
-    website_url: "https://lead-ai.us"
+    website_url: "https://lead-ai-us.vercel.app"
     deployment_status: "verified"
     deployment_provider: "vercel"
     hf_model: null
     hf_dataset: null
     hf_space: null
     kaggle_asset: null
-    last_verified: "2026-08-07"
-    notes: "Vite/React/TypeScript application. Deployed on Vercel team aruns-projects-0839d12f project lead-ai-us."
+    last_verified: "2026-08-08"
+    notes: "Phase 1 Modern Portal verified. Includes next-themes light/dark mode, 4 Automation Paths (zero public pricing), ConsultationModal intake bridge, and /api/contact Vercel serverless function."
 
   - id: "lead-ai-business-audit"
     name: "Lead.AI Business Automation Audit Tool"
@@ -35,7 +35,7 @@ modules:
     hf_dataset: null
     hf_space: null
     kaggle_asset: null
-    last_verified: "2026-08-07"
+    last_verified: "2026-08-08"
     notes: "TypeScript audit application connected from main site CTA."
 
   - id: "lead-ai-platform"
@@ -52,7 +52,7 @@ modules:
     hf_dataset: null
     hf_space: null
     kaggle_asset: null
-    last_verified: "2026-08-07"
+    last_verified: "2026-08-08"
     notes: "Repository scaffold initialized."
 
   - id: "lead-ai-website-chatbot"
@@ -69,7 +69,7 @@ modules:
     hf_dataset: null
     hf_space: null
     kaggle_asset: null
-    last_verified: "2026-08-07"
+    last_verified: "2026-08-08"
     notes: "Local component prototype working on leadai.us site; modular package extraction planned for Phase 1."
 
   - id: "lead-ai-whatsapp-agent"
@@ -86,7 +86,7 @@ modules:
     hf_dataset: null
     hf_space: null
     kaggle_asset: null
-    last_verified: "2026-08-07"
+    last_verified: "2026-08-08"
     notes: "Repository scaffold initialized; Twilio integration planned."
 
   - id: "lead-ai-lead-scoring-api"
@@ -103,7 +103,7 @@ modules:
     hf_dataset: null
     hf_space: null
     kaggle_asset: null
-    last_verified: "2026-08-07"
+    last_verified: "2026-08-08"
     notes: "Repository scaffold initialized."
 
   - id: "lead-ai-prompt-vault"
@@ -120,7 +120,7 @@ modules:
     hf_dataset: null
     hf_space: null
     kaggle_asset: null
-    last_verified: "2026-08-07"
+    last_verified: "2026-08-08"
     notes: "Prompt templates for chatbot and lead scoring."
 
   - id: "lead-ai-firebase-saas-starter"
@@ -137,7 +137,7 @@ modules:
     hf_dataset: null
     hf_space: null
     kaggle_asset: null
-    last_verified: "2026-08-07"
+    last_verified: "2026-08-08"
     notes: "Foundation for multi-tenant data isolation and security rules."
 
   - id: "lead-ai-fraud-shield"
@@ -154,5 +154,5 @@ modules:
     hf_dataset: "lead-ai-labs/fraud-shield-synthetic-transactions"
     hf_space: "arun-gharami/fraud-detection-xai-demo"
     kaggle_asset: unverified
-    last_verified: "2026-08-07"
+    last_verified: "2026-08-08"
     notes: "Org scaffold lives at Lead-AI-US/lead-ai-fraud-shield; working Python/SHAP prototype currently lives at Arungharami/lead-ai-fraud-shield."
